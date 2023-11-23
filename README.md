@@ -30,3 +30,21 @@ The deployment terminal is set to 80 columns by 24 rows. That means that each li
 ---
 
 Happy coding!
+
+# Battleboard
+
+## Purpose
+
+## Installation Instructions
+
+## Features
+### Existing Features
+
+## Testing
+### General Continuous Testing
+### Validator Testing
+### De-bugging:
+- Corrected an error in the code where 'chr' was written, rather than 'ch' resulting in the code not running correctly and not printing the table or content.
+- 
+
+
