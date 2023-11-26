@@ -22,7 +22,7 @@ print("The computer will randomly generate the coordinates of the front of the s
 print("The computer will then randomly generate the coordinates of the back of the ship.")
 print("The computer will then check if the ship is in a valid position.")
 
-def user_shot():
+def user_shot(guesses):
 
     ok = "n"
     while ok == "n":
@@ -31,6 +31,8 @@ def user_shot():
             shot = int(shot)
             if shot < 0 or shot > 99:
                 print("Invalid shot, try again.")
+            elif shot in guesses:
+                print("You have already fired at this location, try again.")
             else:
                 ok = "y"
                 break
@@ -57,9 +59,29 @@ def show_board(hit, miss, comp):
             place = place + 1
         print(x, " ",row)
 
-hit = [21,22]
-miss = [20,24,12,13]
-comp = [23]
+def check_shot(boat1, shot, hit, miss, comp):
+    if shot in boat1:
+        print("You have hit a ship!")
+        hit.append(shot)
+        boat1.remove(shot)
+        if len(boat1) == 0:
+            print("You have sunk a ship!")
+            print("You have sunk all of the computer's ships!")
+            print("You have won!")
+    else:
+        print("You have missed!")
+        miss.append(shot)
 
-shot = user_shot()
+    return boat1, hit, miss, comp
+
+
+boat1 = [45,46,47]
+hit = []
+miss = []
+comp = []
+
+guesses = hit + miss + comp
+
+shot = user_shot(guesses)
+hit, miss, comp = check_shot(boat1, shot, hit, miss, comp)
 show_board(hit, miss, comp)
