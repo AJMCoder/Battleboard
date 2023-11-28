@@ -41,12 +41,13 @@ def show_board(hit, miss, comp):
             elif place in hit:
                 ch = " o "
             elif place in comp:
-                ch = " O "        
+                ch = " O "  
+                #this is the symbol signifying a ship has been sunk.      
             row = row + ch
             place = place + 1
         print(x, " ",row)
 
-def check_shot(boat1, shot, hit, miss, comp):
+def check_shot(boat1, boat2, shot, hit, miss, comp):
     if shot in boat1:
         #remove the shot from the boat1 list.
         print("You have hit a ship!")
@@ -61,10 +62,24 @@ def check_shot(boat1, shot, hit, miss, comp):
         print("You have missed!")
         miss.append(shot)
 
-    return boat1, hit, miss, comp
+#this is the same as the above code but for boat2.
+    if shot in boat2:
+        #remove the shot from the boat2 list.
+        print("You have hit a ship!")
+        boat2.remove(shot)
+        #if the length of boat2 is greater than 0, then the ship has not been sunk.
+        if len(boat2) > 0:
+            hit.append(shot)
+        else:
+            comp.append(shot)
+            print("You have sunk a ship!")    
+
+    return boat1, boat2, hit, miss, comp
 
 #this is the main program that calls the functions.
 boat1 = [45,46,47]
+boat2 = [18,28,38]
+
 hit = []
 miss = []
 comp = []
@@ -72,6 +87,13 @@ comp = []
 for i in range(10):
     guesses = hit + miss + comp
     shot = user_shot(guesses)
-    boat1, hit, miss, comp = check_shot(boat1, shot, hit, miss, comp)
+    boat1, boat2, hit, miss, comp = check_shot(boat1, shot, hit, miss, comp)
     show_board(hit, miss, comp)
+
+    if len(boat1) < 1 and len(boat2) < 1:
+        print("You have won!")
+        break
+
+
+
     
