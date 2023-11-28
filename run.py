@@ -57,24 +57,22 @@ def check_shot(boat1, boat2, shot, hit, miss, comp):
             hit.append(shot)
         else:
             comp.append(shot)
-            print("You have sunk a ship!") 
-    else:
-        print("You have missed!")
-        miss.append(shot)
-
-#this is the same as the above code but for boat2.
-    if shot in boat2:
-        #remove the shot from the boat2 list.
+            print("You have sunk a ship!")
+    #this is the same as above but for boat2.
+    elif shot in boat2:
         print("You have hit a ship!")
         boat2.remove(shot)
-        #if the length of boat2 is greater than 0, then the ship has not been sunk.
         if len(boat2) > 0:
             hit.append(shot)
         else:
             comp.append(shot)
-            print("You have sunk a ship!")    
+            print("You have sunk a ship!")
+    else:
+        print("You have missed!")
+        miss.append(shot)   
 
     return boat1, boat2, hit, miss, comp
+
 
 #this is the main program that calls the functions.
 boat1 = [45,46,47]
