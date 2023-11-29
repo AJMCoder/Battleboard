@@ -36,7 +36,15 @@ def check_boat(b,start,dirn):
     boat = check_ok(boat)   
     return boat     
 
+#this is the function to create the boats.
+def create_boats(boats):
 
+    boats = [4,4,3,3,2]
+    for b in boats:
+        boat_start = randrange(99)
+        boat_direction = randrange(1,4)
+        print(b, boat_start, boat_direction)
+        boat = check_boat(b,boat_start,boat_direction)
 
 #this is the function to show the board.
 def show_board(hit, miss, comp):
