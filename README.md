@@ -49,5 +49,7 @@ Happy coding!
 - In order to fix my original error above, i scanned through the written code and could see that the the 'show_board' and surrounding code at the bottom had not been grouped into a function, so by moving the code into a for loop fucntion, the list then became workable.
 - When adding a new boat, i realised that when writing the second check_shot function that it wasn't as simple as re-writing it the same as boat 1. I needed to add an 'elif' statement so that if there is a miss for both, the code can understand that it has missed both boats not just 1 of them. 
 
+## Deployment:
+
 
 

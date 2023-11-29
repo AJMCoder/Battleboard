@@ -21,6 +21,8 @@ def check_ok(boat):
 def check_boat(b,start,dirn):
 
     boat = []
+    #this is the variable for the length of the boat.
+
     if dirn == 1:
         for i in range(b):
             boat.append(start - i*10)
@@ -39,12 +41,19 @@ def check_boat(b,start,dirn):
 #this is the function to create the boats.
 def create_boats(boats):
 
+    ships = []
     boats = [4,4,3,3,2]
+    #this is the for loop to create the boats.
     for b in boats:
-        boat_start = randrange(99)
-        boat_direction = randrange(1,4)
-        print(b, boat_start, boat_direction)
-        boat = check_boat(b,boat_start,boat_direction)
+        boat = [-1]
+        while boat[0] == -1:
+            boat_start = randrange(99)
+            boat_direction = randrange(1,4)
+            print(b, boat_start, boat_direction)
+            boat = check_boat(b,boat_start,boat_direction)
+        ships.append(boat)
+        print(ships)
+
 
 #this is the function to show the board.
 def show_board(hit, miss, comp):
@@ -70,7 +79,8 @@ def show_board(hit, miss, comp):
 
         print(x, " ",row)
 
-def check_shot(boat1, boat2, shot, hit, miss, comp):
+#this is the function to check if the shot is a hit or a miss or comp.
+def check_shot(boat1, boat2, boat3, shot, hit, miss, comp):
     if shot in boat1:
         print("You have hit a ship!")
         boat1.remove(shot)
@@ -88,51 +98,62 @@ def check_shot(boat1, boat2, shot, hit, miss, comp):
         else:
             comp.append(shot)
             print("You have sunk a ship!")
+    #this is the same as above but for boat3.        
+    elif shot in boat3:
+        print("You have hit a ship!")
+        boat3.remove(shot)
+        if len(boat3) > 0:
+            hit.append(shot)
+        else:
+            comp.append(shot)
+            print("You have sunk a ship!")        
     else:
         print("You have missed!")
         miss.append(shot)   
 
     return boat1, boat2, hit, miss, comp
 
-#this is the function for the user to enter their shot.
+#this is the function that verifies the users input.
 def user_shot(guesses):
 
     ok = "n"
     while ok == "n":
         try: 
-            #this is the input for the user to enter their shot.
+            #this is the input that requests the users shot.
             shot = input("Enter the coordinates of where you want to fire your shot: ")
             shot = int(shot)
             if shot < 0 or shot > 99:
                 #this is to check if the shot is within the range of the board.
                 print("Invalid shot, try again.")
             elif shot in guesses:
-                #this is to check if the shot has already been fired.
+                #this is to check if the shot has already been fired in this tile.
                 print("You have already fired at this location, try again.")
             else:
                 ok = "y"
                 break
         except:
-            #this is to check if the shot is a number.
+            #this is to check if the shot is a integer.
             print("Invalid entry, try again.")
             
     return shot
 
-
-#this is the main program that calls the functions.
-boat1 = [45,46,47]
-boat2 = [18,28,38]
+# this is the main program that runs the game.
+boat1 = [23,24,25]
+boat2 = [34,35,36]
+boat3 = [1,11,21]
 
 hit = []
 miss = []
 comp = []
 
-for i in range(10):
+# this is the for loop that runs the game and determines how many turns the user has.
+for i in range(20):
     guesses = hit + miss + comp
     shot = user_shot(guesses)
-    boat1, boat2, hit, miss, comp = check_shot(boat1, boat2, shot, hit, miss, comp)
+    boat1, boat2, boat3, hit, miss, comp = check_shot(boat1, boat2, boat3, shot, hit, miss, comp)
     show_board(hit, miss, comp)
 
+    # this is the if statement that determines if the user has won or lost.
     if len(boat1) < 1 and len(boat2) < 1:
         print("You have won!")
         break
