@@ -1,10 +1,23 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
 from random import randrange
 
+#These are the instructions for the game.
 print("Battleboard Game")
 print("Welcome to Battleships!")
+print('''
+Instructions:
+        You have a total of 20 shots to sink the three ships hidden on the board.
+        The ships are 3 tiles long and can be placed horizontally or vertically.
+        You will be asked to enter the coordinates of where you want to fire your shot.
+        The coordinates are entered as a single number between 0 and 99.
+        The first digit is the row number and the second digit is the column number.
+        For example, 0 is the top left corner and 99 is the bottom right corner.
+        If you hit a ship, you will be told that you have hit a ship.
+        If you miss a ship, you will be told that you have missed.
+        If you sink a ship, you will be told that you have sunk a ship.
+        When you have sunk all three ships, you will win the game.
+        If you run out of shots before you sink all three ships, you will lose the game.
+        Good luck!
+      ''')
 
 def check_ok(boat):
 
@@ -137,7 +150,7 @@ def user_shot(guesses):
             
     return shot
 
-# this is the main program that runs the game.
+# These are the pre-selected coordinates for the boats.
 boat1 = [23,24,25]
 boat2 = [34,35,36]
 boat3 = [1,11,21]

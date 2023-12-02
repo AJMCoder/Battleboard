@@ -33,9 +33,15 @@ Happy coding!
 
 # Battleboard
 
+Project 3 is a battleship based game, with the players objective being to destroy the ships located on the board. In this version of the game, the location of the ships has been pre-selected, so the user must guess where the ships are through trial and error. This is a Python terminal game that runs through the Code Institute mock terminal via Heroku. 
+
 ## Purpose
 
+The objective of the game is to destroy the battleships that have been placed in random locations on the board, by the developer. Through trial and error, the user must guess where these hidden ships are located and destroy them. However, there are only a limited amount of tries before the user loses, and the developer wins!
+
 ## Installation Instructions
+
+
 
 ## Features
 ### Existing Features
