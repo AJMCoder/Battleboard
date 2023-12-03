@@ -19,55 +19,6 @@ Instructions:
         Good luck!
       ''')
 
-def check_ok(boat):
-
-    boat.sort()
-    for i in range(len(boat)):
-        num = boat[i]
-        if num < 0 or num > 99:
-            boat = [-1]
-            break
-
-
-
-#this is the function to check if the boat is in the right place.
-def check_boat(b,start,dirn):
-
-    boat = []
-    #this is the variable for the length of the boat.
-
-    if dirn == 1:
-        for i in range(b):
-            boat.append(start - i*10)
-    elif dirn == 2:
-        for i in range(b):
-            boat.append(start + i)
-    elif dirn == 3:
-        for i in range(b):
-            boat.append(start + i*10)
-    elif dirn == 4:
-        for i in range(b):
-            boat.append(start - i)
-    boat = check_ok(boat)   
-    return boat     
-
-#this is the function to create the boats.
-def create_boats(boats):
-
-    ships = []
-    boats = [4,4,3,3,2]
-    #this is the for loop to create the boats.
-    for b in boats:
-        boat = [-1]
-        while boat[0] == -1:
-            boat_start = randrange(99)
-            boat_direction = randrange(1,4)
-            print(b, boat_start, boat_direction)
-            boat = check_boat(b,boat_start,boat_direction)
-        ships.append(boat)
-        print(ships)
-
-
 #this is the function to show the board.
 def show_board(hit, miss, comp):
     print("     0  1  2  3  4  5  6  7  8  9")
@@ -173,6 +124,54 @@ for i in range(20):
         print("You have won!")
         break
 
+def check_ok(boat):
 
+    boat.sort()
+    for i in range(len(boat)):
+        num = boat[i]
+        if num < 0 or num > 99:
+            boat = [-1]
+            break
+
+
+#------ THIS IS FOR FUTURE DEVELOPMENT AND IS NOT PART OF THE GAME YET. ------#
+
+#this is the function to check if the boat is in the right place.
+def check_boat(b,start,dirn):
+
+    boat = []
+    #this is the variable for the length of the boat.
+
+    if dirn == 1:
+        for i in range(b):
+            boat.append(start - i*10)
+    elif dirn == 2:
+        for i in range(b):
+            boat.append(start + i)
+    elif dirn == 3:
+        for i in range(b):
+            boat.append(start + i*10)
+    elif dirn == 4:
+        for i in range(b):
+            boat.append(start - i)
+    boat = check_ok(boat) 
+      
+    return boat     
+
+#this is the function to create the boats.
+def create_boats(boats):
+
+    ships = []
+    boats = [4,4,3,3,2]
+    #this is the for loop to create the boats.
+    for b in boats:
+        boat = [-1]
+        while boat[0] == -1:
+            boat_start = randrange(99)
+            boat_direction = randrange(1,4)
+            print(b, boat_start, boat_direction)
+            boat = check_boat(b,boat_start,boat_direction)
+        ships.append(boat)
+        print(ships)
 
     
