@@ -41,7 +41,7 @@ The objective of the game is to destroy the battleships that have been placed in
 
 ## How to play
 
-Battleships is a classic strategy game whereby the users end goal, is to destroy the hidden ships on the board. This project is based on this classic board game and is made purely in Python. This version of the game is soley played against the developer, and so the ships placements have been predetermined before the user starts. 
+Battleships is a classic strategy game whereby the users end goal, is to destroy the hidden ships on the board. This project is based on this classic board game and is made purely in Python. This version of the game is soley played against the developer, and so the ships placements have been predetermined before the user starts. The objective for the user, is to try and guess where the ships are located through entering coordinates, as propted by the console. After each attempt, the console will show and mark where the user selected and display either; Miss, Hit or Destroyed. A miss is displayed as an 'x', a hit is displayed as an 'o' and when the user destroys the final part of a ship a 'D' is shown, indicating destroyed. The user has a total of 3 ships to destroy completely within 20 attempts, otherwise a message of '
 
 ## Features
 
@@ -73,9 +73,11 @@ Having passed my code through the PEP8 Linter, which returned no errors, i have 
 ### De-bugging:
 
 - Corrected an error in the code where 'chr' was written, rather than 'ch' resulting in the code not running correctly and not printing the table or content.
-- When testing the code to see if inputting coordinates was working, i discovered that the grid wasnt being displayed at all. I tried re-writing the 'check shot' function to see if it was interfering with the results, but that didnt fix it. However, this did help me discover another issue, as the original code for this section was not functioning properly and didn't allow the user to enter another guess. By 
+- When testing the code to see if inputting coordinates was working, i discovered that the grid wasnt being displayed at all. I tried re-writing the 'check shot' function to see if it was interfering with the results, but that didnt fix it. However, this did help me discover another issue, as the original code for this section was not functioning properly and didn't allow the user to enter another guess.
 - In order to fix my original error above, i scanned through the written code and could see that the the 'show_board' and surrounding code at the bottom had not been grouped into a function, so by moving the code into a for loop fucntion, the list then became workable.
 - When adding a new boat, i realised that when writing the second check_shot function that it wasn't as simple as re-writing it the same as boat 1. I needed to add an 'elif' statement so that if there is a miss for both, the code can understand that it has missed both boats not just 1 of them. 
+- When testing after adding a third boat location, the terminal after the first coordinate input was returning a ValueError message, pointing to line 168 as the culprit. I tried re-writing that line of code, ensuring it was written out correctly and included the 'boat3' in its command, however the same message was beign returned each time. So, i started working from the top-down, analysing my code to see if i had missing something earlier on. Within the check shot function i noticed (after many scans) that in the return at the bottom of the function, 'boat3' was not defined. Upon editing this mistake and adding this in, the board now functioned again properly.
+- During some of the final testing stages, it was discovered that there was no message to the user if all attempts had been used, to say the game had ended and that they had lost. This was rectified and added in as a feature.
 
 ### Deployment:
 

@@ -102,6 +102,7 @@ def check_shot(boat1, boat2, boat3, shot, hit, miss, comp):
         else:
             comp.append(shot)
             print("You have sunk a ship!")
+
     #this is the same as above but for boat2.
     elif shot in boat2:
         print("You have hit a ship!")
@@ -111,6 +112,7 @@ def check_shot(boat1, boat2, boat3, shot, hit, miss, comp):
         else:
             comp.append(shot)
             print("You have sunk a ship!")
+
     #this is the same as above but for boat3.        
     elif shot in boat3:
         print("You have hit a ship!")
@@ -124,7 +126,7 @@ def check_shot(boat1, boat2, boat3, shot, hit, miss, comp):
         print("You have missed!")
         miss.append(shot)   
 
-    return boat1, boat2, hit, miss, comp
+    return boat1, boat2, boat3, hit, miss, comp 
 
 #this is the function that verifies the users input.
 def user_shot(guesses):
@@ -153,7 +155,7 @@ def user_shot(guesses):
 # These are the pre-selected coordinates for the boats.
 boat1 = [23,24,25]
 boat2 = [34,35,36]
-boat3 = [1,11,21]
+boat3 = [00,10,20]
 
 hit = []
 miss = []
@@ -163,11 +165,11 @@ comp = []
 for i in range(20):
     guesses = hit + miss + comp
     shot = user_shot(guesses)
-    boat1, boat2, boat3, hit, miss, comp = check_shot(boat1, boat2, boat3, shot, hit, miss, comp)
-    show_board(hit, miss, comp)
+    boat1,boat2,boat3,hit,miss,comp = check_shot(boat1,boat2,boat3,shot,hit,miss,comp)
+    show_board(hit,miss,comp)
 
     # this is the if statement that determines if the user has won or lost.
-    if len(boat1) < 1 and len(boat2) < 1:
+    if len(boat1) < 1 and len(boat2) < 1 and len(boat3) < 1:
         print("You have won!")
         break
 
