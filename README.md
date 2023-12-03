@@ -47,6 +47,11 @@ Battleships is a classic strategy game whereby the users end goal, is to destroy
 
 ### Existing Features
 
+- Currently the game is played on a 10 by 10 board which is generated with predetermined ship locations on it.
+- The boards axis are labelled numerically, with the smallest value input being 0, top left corner, and the largest being 99, bottom right corner.
+- Before starting the game, the play is unaware of the coordinates, as they are nested in the raw code, so the ships are completely hidden until found.
+- 
+
 ### Future Developments
 
 **Coming Soon**

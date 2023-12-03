@@ -5,10 +5,8 @@ play_again = 'yes'
 while play_again.lower() == 'yes':
 
     # These are the instructions for the game.
-    print("Battleboard Game")
     print("Welcome to Battleships!")
-    print('''
-    Instructions:
+    print('''Instructions:
             1.) You have 15 shots to sink the three ships hidden on the board.
             2.) The ships are 3 tiles long, placed horizontally or vertically.
             3.) Enter the coordinates of where you want to fire your shot.
@@ -21,11 +19,11 @@ while play_again.lower() == 'yes':
             10.) If all tiles of a ship are hit, the ship is sunk.
             11.) When you have sunk all three ships, you will win the game.
             12.) If you run out of shots, you will lose the game.
-                Good luck!
+                                 Good luck!
         ''')
 
     # this is the function to show the board.
-    def show_board(hit, miss, destroy):
+    def display_board(hit, miss, destroy):
         print("     0  1  2  3  4  5  6  7  8  9")
 
 
@@ -47,6 +45,9 @@ while play_again.lower() == 'yes':
                 place = place + 1
 
             print(x, " ",row)
+
+
+# This code is adapted from Dr. Codie's Battleship game. Linked here: https://drcodie.com/battleships-game-in-python/
 
     # this is the function to check if the shot is a hit or a miss or destroy.
     def check_shot(ship1, ship2, ship3, shot, hit, miss, destroy):
@@ -112,7 +113,7 @@ while play_again.lower() == 'yes':
         guesses = hit + miss + destroy
         shot = user_shot(guesses)
         ship1,ship2,ship3,hit,miss,destroy = check_shot(ship1,ship2,ship3,shot,hit,miss,destroy)
-        show_board(hit,miss,destroy)
+        display_board(hit,miss,destroy)
 
         # this is the if statement that determines if the user has won or lost.
         print(i)
