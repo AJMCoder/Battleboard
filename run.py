@@ -1,188 +1,133 @@
 from random import randrange
 
+# This while loop allows the user to play the game again.
 play_again = 'yes'
 while play_again.lower() == 'yes':
-    
-    #These are the instructions for the game.
+
+    # These are the instructions for the game.
     print("Battleboard Game")
     print("Welcome to Battleships!")
     print('''
     Instructions:
-            1.) You have a total of 20 shots to sink the three ships hidden on the board.
-            2.) The ships are 3 tiles long and can be placed horizontally or vertically.
-            3.) You will be asked to enter the coordinates of where you want to fire your shot.
-            4.) The coordinates are entered as a single number between 0 and 99.
-            5.) The first digit is the row number and the second digit is the column number.
-            6.) For example, 0 is the top left corner and 99 is the bottom right corner.
-            7.) If you hit a ship, you will be told that you have hit a ship.
-            8.) If you miss a ship, you will be told that you have missed.
-            9.) If you sink a ship, you will be told that you have sunk a ship.
-            10.) When you have sunk all three ships, you will win the game.
-            11.) If you run out of shots before you sink all three ships, you will lose the game.
+            1.) You have 15 shots to sink the three ships hidden on the board.
+            2.) The ships are 3 tiles long, placed horizontally or vertically.
+            3.) Enter the coordinates of where you want to fire your shot.
+            4.) Coordinates are entered as a single number between 0 and 99.
+            5.) The first digit is the row number.
+            6.) The second digit is the column number.
+            7.) For example, 0 is the top left and 99 is the bottom right.
+            8.) If you hit a ship, you will be told that you have hit a ship.
+            9.) You will be told if you have hit or missed after each shot.
+            10.) If all tiles of a ship are hit, the ship is sunk.
+            11.) When you have sunk all three ships, you will win the game.
+            12.) If you run out of shots, you will lose the game.
                 Good luck!
         ''')
 
-    #this is the function to show the board.
-    def show_board(hit, miss, comp):
+    # this is the function to show the board.
+    def show_board(hit, miss, destroy):
         print("     0  1  2  3  4  5  6  7  8  9")
 
-        #this is the variable for the place on the board.
+
+        # this is the variable for the place on the board.
         place = 0
-        #outside for loop prints each row, number of row and the string of dashes.
+        # outside for loop prints each row, number of row and string of dashes.
         for x in range(10):
             row = ""
-            #inside for loop creates the row of dashes.
+            # inside for loop creates the row of dashes.
             for y in range(10):
                 ch = " _ "
                 if place in miss:
                     ch = " x "
                 elif place in hit:
                     ch = " o "
-                elif place in comp:
-                    #this is the symbol signifying a ship has been sunk.
+                elif place in destroy:
                     ch = " D "        
                 row = row + ch
                 place = place + 1
 
             print(x, " ",row)
 
-    #this is the function to check if the shot is a hit or a miss or comp.
-    def check_shot(boat1, boat2, boat3, shot, hit, miss, comp):
-        if shot in boat1:
+    # this is the function to check if the shot is a hit or a miss or destroy.
+    def check_shot(ship1, ship2, ship3, shot, hit, miss, destroy):
+        if shot in ship1:
             print("You have hit a ship!")
-            boat1.remove(shot)
-            if len(boat1) > 0:
+            ship1.remove(shot)
+            if len(ship1) > 0:
                 hit.append(shot)
             else:
-                comp.append(shot)
+                destroy.append(shot)
                 print("You have sunk a ship!")
 
-        #this is the same as above but for boat2.
-        elif shot in boat2:
+        # this is the same as above but for ship2.
+        elif shot in ship2:
             print("You have hit a ship!")
-            boat2.remove(shot)
-            if len(boat2) > 0:
+            ship2.remove(shot)
+            if len(ship2) > 0:
                 hit.append(shot)
             else:
-                comp.append(shot)
+                destroy.append(shot)
                 print("You have sunk a ship!")
 
-        #this is the same as above but for boat3.        
-        elif shot in boat3:
+        # this is the same as above but for ship3.    
+        elif shot in ship3:
             print("You have hit a ship!")
-            boat3.remove(shot)
-            if len(boat3) > 0:
+            ship3.remove(shot)
+            if len(ship3) > 0:
                 hit.append(shot)
             else:
-                comp.append(shot)
-                print("You have sunk a ship!")        
+                destroy.append(shot)
+                print("You have sunk a ship!")
         else:
             print("You have missed!")
-            miss.append(shot)   
+            miss.append(shot)
 
-        return boat1, boat2, boat3, hit, miss, comp 
+        return ship1, ship2, ship3, hit, miss, destroy
 
-    #this is the function that verifies the users input.
+    # this is the function that verifies the users input.
     def user_shot(guesses):
-
-        ok = "n"
-        while ok == "n":
-            try: 
-                #this is the input that requests the users shot.
-                shot = input("Enter the coordinates of where you want to fire your shot: ")
-                shot = int(shot)
+        while True:
+            try:
+                shot = int(input("Enter the coordinates of where you want to fire:"))
                 if shot < 0 or shot > 99:
-                    #this is to check if the shot is within the range of the board.
                     print("Invalid shot, try again.")
                 elif shot in guesses:
-                    #this is to check if the shot has already been fired in this tile.
-                    print("You have already fired at this location, try again.")
+                    print("Already fired at this location, try again.")
                 else:
-                    ok = "y"
-                    break
+                    return shot
             except:
-                #this is to check if the shot is a integer.
                 print("Invalid entry, try again.")
-                
-        return shot
 
-
-    # These are the pre-selected coordinates for the boats.
-    boat1 = [23,24,25]
-    boat2 = [34,35,36]
-    boat3 = [00,10,20]
+    # These are the pre-selected coordinates for the ships.
+    ship1 = [23, 24, 25]
+    ship2 = [67, 77, 87]
+    ship3 = [00, 10, 20]
 
     hit = []
     miss = []
-    comp = []
+    destroy = []
 
-    # this is the for loop that runs the game and determines how many turns the user has.
-    for i in range(20):
-        guesses = hit + miss + comp
+    # this for loop runs the game and determines how many turns the user has.
+    for i in range(15):
+        guesses = hit + miss + destroy
         shot = user_shot(guesses)
-        boat1,boat2,boat3,hit,miss,comp = check_shot(boat1,boat2,boat3,shot,hit,miss,comp)
-        show_board(hit,miss,comp)
+        ship1,ship2,ship3,hit,miss,destroy = check_shot(ship1,ship2,ship3,shot,hit,miss,destroy)
+        show_board(hit,miss,destroy)
 
         # this is the if statement that determines if the user has won or lost.
         print(i)
-        if i == 19:
+        if i == 14:
             print("You have lost!")
             break
 
-        elif len(boat1) < 1 and len(boat2) < 1 and len(boat3) < 1:
+        elif len(ship1) < 1 and len(ship2) < 1 and len(ship3) < 1:
             print("You have won!")
             break
 
     play_again = input("Do you want to play again? (yes/no): ")
-    
-
-#------ THIS IS FOR FUTURE DEVELOPMENT AND IS NOT PART OF THE GAME YET. ------#
-
-def check_ok(boat):
-
-    boat.sort()
-    for i in range(len(boat)):
-        num = boat[i]
-        if num < 0 or num > 99:
-            boat = [-1]
-            break
-
-#this is the function to check if the boat is in the right place.
-def check_boat(b,start,dirn):
-
-    boat = []
-    #this is the variable for the length of the boat.
-
-    if dirn == 1:
-        for i in range(b):
-            boat.append(start - i*10)
-    elif dirn == 2:
-        for i in range(b):
-            boat.append(start + i)
-    elif dirn == 3:
-        for i in range(b):
-            boat.append(start + i*10)
-    elif dirn == 4:
-        for i in range(b):
-            boat.append(start - i)
-    boat = check_ok(boat) 
-      
-    return boat     
-
-#this is the function to create the boats.
-def create_boats(boats):
-
-    ships = []
-    boats = [4,4,3,3,2]
-    #this is the for loop to create the boats.
-    for b in boats:
-        boat = [-1]
-        while boat[0] == -1:
-            boat_start = randrange(99)
-            boat_direction = randrange(1,4)
-            print(b, boat_start, boat_direction)
-            boat = check_boat(b,boat_start,boat_direction)
-        ships.append(boat)
-        print(ships)
-
-    
+    if play_again.lower() == 'no':
+        print("Thanks for playing!")
+        break
+    else:
+        print("Let's play again!")
+        continue

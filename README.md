@@ -66,17 +66,17 @@ Battleships is a classic strategy game whereby the users end goal, is to destroy
 
 Having passed my code through the PEP8 Linter, which returned no errors, i have continuously tested my game throughout its build. Some of the methods and tests used, are as followed:
 - At numerous development points, I have input code to test the outcome, this included knowingly inputting invalid commands to see what the outcome would be and to ensure that the intended comment from the terminal was executed ("Invalid entry"). 
-- My mentor and friends have both tested the game and played it.
-- 
-
+- A bi-product of testing highlighted areas that required more work, such as game replayability. At end game, the user had no way of replaying without closing the terminal completely, so a replay feature was added as a propt at the end.
+- Another bi-product of testing was what happens if the user uses up all of their guesses before winning? At the time, there was no "You lost!" message. This was later added in to indicate no tries left.
+- My mentor and friends have both tested the game and played it and reported good functionality.
 
 ### De-bugging:
 
 - Corrected an error in the code where 'chr' was written, rather than 'ch' resulting in the code not running correctly and not printing the table or content.
 - When testing the code to see if inputting coordinates was working, i discovered that the grid wasnt being displayed at all. I tried re-writing the 'check shot' function to see if it was interfering with the results, but that didnt fix it. However, this did help me discover another issue, as the original code for this section was not functioning properly and didn't allow the user to enter another guess.
 - In order to fix my original error above, i scanned through the written code and could see that the the 'show_board' and surrounding code at the bottom had not been grouped into a function, so by moving the code into a for loop fucntion, the list then became workable.
-- When adding a new boat, i realised that when writing the second check_shot function that it wasn't as simple as re-writing it the same as boat 1. I needed to add an 'elif' statement so that if there is a miss for both, the code can understand that it has missed both boats not just 1 of them. 
-- When testing after adding a third boat location, the terminal after the first coordinate input was returning a ValueError message, pointing to line 168 as the culprit. I tried re-writing that line of code, ensuring it was written out correctly and included the 'boat3' in its command, however the same message was beign returned each time. So, i started working from the top-down, analysing my code to see if i had missing something earlier on. Within the check shot function i noticed (after many scans) that in the return at the bottom of the function, 'boat3' was not defined. Upon editing this mistake and adding this in, the board now functioned again properly.
+- When adding a new ship, i realised that when writing the second check_shot function that it wasn't as simple as re-writing it the same as ship 1. I needed to add an 'elif' statement so that if there is a miss for both, the code can understand that it has missed both ships not just 1 of them. 
+- When testing after adding a third ship location, the terminal after the first coordinate input was returning a ValueError message, pointing to line 168 as the culprit. I tried re-writing that line of code, ensuring it was written out correctly and included the 'ship3' in its command, however the same message was beign returned each time. So, i started working from the top-down, analysing my code to see if i had missing something earlier on. Within the check shot function i noticed (after many scans) that in the return at the bottom of the function, 'ship3' was not defined. Upon editing this mistake and adding this in, the board now functioned again properly.
 - During some of the final testing stages, it was discovered that there was no message to the user if all attempts had been used, to say the game had ended and that they had lost. This was rectified and added in as a feature.
 
 ### Deployment:
