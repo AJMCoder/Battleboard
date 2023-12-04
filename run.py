@@ -1,5 +1,3 @@
-from random import randrange
-
 # This while loop allows the user to play the game again.
 play_again = 'yes'
 while play_again.lower() == 'yes':
@@ -22,17 +20,19 @@ while play_again.lower() == 'yes':
                                  Good luck!
         ''')
 
+# This is adapted from Dr. Codie's Battleship game.
+# Linked here: https://drcodie.com/battleships-game-in-python/
+
     # this is the function to show the board.
     def display_board(hit, miss, destroy):
         print("     0  1  2  3  4  5  6  7  8  9")
 
-        # this is the variable for the place on the board.
-        place = 0
-        # outside for loop prints each row, number of row and string of dashes.
+        # Create a list of strings representing each row on the board
+        board_rows = []
         for x in range(10):
             row = ""
-            # inside for loop creates the row of dashes.
             for y in range(10):
+                place = x * 10 + y
                 ch = " _ "
                 if place in miss:
                     ch = " x "
@@ -40,13 +40,12 @@ while play_again.lower() == 'yes':
                     ch = " o "
                 elif place in destroy:
                     ch = " D "
-                row = row + ch
-                place = place + 1
+                row += ch
+            board_rows.append(row)
 
-            print(x, " ", row)
-
-# This is adapted from Dr. Codie's Battleship game.
-# Linked here: https://drcodie.com/battleships-game-in-python/
+        # Print each row with its corresponding number
+        for i, row in enumerate(board_rows):
+            print(i, " ", row)
 
     # this is the function to check if the shot is a hit or a miss or destroy.
     def check_shot(ship1, ship2, ship3, shot, hit, miss, destroy):
