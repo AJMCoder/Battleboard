@@ -45,7 +45,7 @@ while play_again.lower() == 'yes':
 
             print(x, " ", row)
 
-# This code is adapted from Dr. Codie's Battleship game.
+# This is adapted from Dr. Codie's Battleship game.
 # Linked here: https://drcodie.com/battleships-game-in-python/
 
     # this is the function to check if the shot is a hit or a miss or destroy.
