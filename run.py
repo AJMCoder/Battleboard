@@ -26,7 +26,6 @@ while play_again.lower() == 'yes':
     def display_board(hit, miss, destroy):
         print("     0  1  2  3  4  5  6  7  8  9")
 
-
         # this is the variable for the place on the board.
         place = 0
         # outside for loop prints each row, number of row and string of dashes.
@@ -40,14 +39,14 @@ while play_again.lower() == 'yes':
                 elif place in hit:
                     ch = " o "
                 elif place in destroy:
-                    ch = " D "        
+                    ch = " D "
                 row = row + ch
                 place = place + 1
 
-            print(x, " ",row)
+            print(x, " ", row)
 
-
-# This code is adapted from Dr. Codie's Battleship game. Linked here: https://drcodie.com/battleships-game-in-python/
+# This code is adapted from Dr. Codie's Battleship game.
+# Linked here: https://drcodie.com/battleships-game-in-python/
 
     # this is the function to check if the shot is a hit or a miss or destroy.
     def check_shot(ship1, ship2, ship3, shot, hit, miss, destroy):
@@ -70,7 +69,7 @@ while play_again.lower() == 'yes':
                 destroy.append(shot)
                 print("You have sunk a ship!")
 
-        # this is the same as above but for ship3.    
+        # this is the same as above but for ship3.
         elif shot in ship3:
             print("You have hit a ship!")
             ship3.remove(shot)
@@ -89,14 +88,14 @@ while play_again.lower() == 'yes':
     def user_shot(guesses):
         while True:
             try:
-                shot = int(input("Enter the coordinates of where you want to fire:"))
+                shot = int(input("Enter coordinates to fire a shot:"))
                 if shot < 0 or shot > 99:
                     print("Invalid shot, try again.")
                 elif shot in guesses:
                     print("Already fired at this location, try again.")
                 else:
                     return shot
-            except:
+            except Exception:
                 print("Invalid entry, try again.")
 
     # These are the pre-selected coordinates for the ships.
@@ -112,8 +111,9 @@ while play_again.lower() == 'yes':
     for i in range(15):
         guesses = hit + miss + destroy
         shot = user_shot(guesses)
-        ship1,ship2,ship3,hit,miss,destroy = check_shot(ship1,ship2,ship3,shot,hit,miss,destroy)
-        display_board(hit,miss,destroy)
+        ship1, ship2, ship3, hit, miss, destroy = \
+            check_shot(ship1, ship2, ship3, shot, hit, miss, destroy)
+        display_board(hit, miss, destroy)
 
         # this is the if statement that determines if the user has won or lost.
         print(i)
