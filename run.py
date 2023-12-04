@@ -20,7 +20,7 @@ while play_again.lower() == 'yes':
                                  Good luck!
         ''')
 
-# This is adapted from Dr. Codie's Battleship game.
+# The board layout is adapted from Dr. Codie's Battleship game.
 # Linked here: https://drcodie.com/battleships-game-in-python/
 
     # this is the function to show the board.
@@ -100,7 +100,7 @@ while play_again.lower() == 'yes':
     # These are the pre-selected coordinates for the ships.
     ship1 = [23, 24, 25]
     ship2 = [67, 77, 87]
-    ship3 = [00, 10, 20]
+    ship3 = [0, 10, 20]
 
     hit = []
     miss = []
@@ -109,6 +109,7 @@ while play_again.lower() == 'yes':
     # this for loop runs the game and determines how many turns the user has.
     for i in range(15):
         turns_remaining = 15 - i
+        # this displays the number of turns remaining.
         print(f"Turn {i+1}. Turns remaining: {turns_remaining}")
         guesses = hit + miss + destroy
         shot = user_shot(guesses)

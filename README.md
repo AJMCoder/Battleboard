@@ -22,6 +22,7 @@ Battleships is a classic strategy game whereby the users end goal, is to destroy
 - Regardless of the outcome, at the end of the game, the user will be ask if they would like to play again, entering 'Y' or 'N' to continue.
 - The game has a feature that notifies the user if the input they chose was invalid. For example, if the user wrote "Shoot at tile 56", the terminal would return "Invalid entry, please try again." as this input is not an integer by itself.
 - The game also check to see if the user inputs a repeated guess. So not to take a shot away from the user, the terminal will return "Already fired at this location, try again.".
+- A new feature was added to track the turn the user is on, and notify how many goes they have left.
 
 ## Future Developments
 
