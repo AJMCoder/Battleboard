@@ -108,6 +108,8 @@ while play_again.lower() == 'yes':
 
     # this for loop runs the game and determines how many turns the user has.
     for i in range(15):
+        turns_remaining = 15 - i
+        print(f"Turn {i+1}. Turns remaining: {turns_remaining}")
         guesses = hit + miss + destroy
         shot = user_shot(guesses)
         ship1, ship2, ship3, hit, miss, destroy = \
