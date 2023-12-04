@@ -65,7 +65,8 @@ Battleships is a classic strategy game whereby the users end goal, is to destroy
 
 ### Validator Testing
 
-- [PEP8 Linter]()
+- [PEP8 Linter](https://pep8ci.herokuapp.com/#): No errors.
+![PEP8 Test](/assets/images/ci_linter.png)
 
 ### General Continuous Testing
 
@@ -83,6 +84,7 @@ Having passed my code through the PEP8 Linter, which returned no errors, i have 
 - When adding a new ship, i realised that when writing the second check_shot function that it wasn't as simple as re-writing it the same as ship 1. I needed to add an 'elif' statement so that if there is a miss for both, the code can understand that it has missed both ships not just 1 of them. 
 - When testing after adding a third ship location, the terminal after the first coordinate input was returning a ValueError message, pointing to line 168 as the culprit. I tried re-writing that line of code, ensuring it was written out correctly and included the 'ship3' in its command, however the same message was beign returned each time. So, i started working from the top-down, analysing my code to see if i had missing something earlier on. Within the check shot function i noticed (after many scans) that in the return at the bottom of the function, 'ship3' was not defined. Upon editing this mistake and adding this in, the board now functioned again properly.
 - During some of the final testing stages, it was discovered that there was no message to the user if all attempts had been used, to say the game had ended and that they had lost. This was rectified and added in as a feature.
+- When putting my code through the CI Python Linter, i was met with a multitude of errors, ranging from ' trailing whitespace', 'line too long', missing white space', and 'do not use bare "except"'. Running through my code again, i removed the whitespace where needed and additinally added whitespace where necessary. I also shortened lines of code to fit the 80 character limit by either rewording or using a '\' to move to next line. The "except" term required the addition of 'Exception:' as this is the base type for all 'Regular' exceptions rather than catching all of them, some of which i wouldnt want to catch, if left with just a bare except. 
 
 ### Deployment:
 
@@ -99,6 +101,8 @@ Steps for deployment:
 
 ### Credits
 
+- Inspiration taken from [Dr. Codie](https://drcodie.com/battleships-game-in-python/).
+- Resources used from [Codecademy](https://www.codecademy.com/resources/docs/swift/arrays), Mimo Coding App, and 
 
 
 
