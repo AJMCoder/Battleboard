@@ -122,7 +122,7 @@ while play_again.lower() == 'yes':
             break
 
         elif len(ship1) < 1 and len(ship2) < 1 and len(ship3) < 1:
-            print("You have won!")
+            print("Congratulations! You have won!")
             break
 
     play_again = input("Do you want to play again? (yes/no): ")

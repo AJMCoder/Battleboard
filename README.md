@@ -41,18 +41,22 @@ The objective of the game is to destroy the battleships that have been placed in
 
 ## How to play
 
-Battleships is a classic strategy game whereby the users end goal, is to destroy the hidden ships on the board. This project is based on this classic board game and is made purely in Python. This version of the game is soley played against the developer, and so the ships placements have been predetermined before the user starts. The objective for the user, is to try and guess where the ships are located through entering coordinates, as propted by the console. After each attempt, the console will show and mark where the user selected and display either; Miss, Hit or Destroyed. A miss is displayed as an 'x', a hit is displayed as an 'o' and when the user destroys the final part of a ship a 'D' is shown, indicating destroyed. The user has a total of 3 ships to destroy completely within 20 attempts, otherwise a message of '
+Battleships is a classic strategy game whereby the users end goal, is to destroy the hidden ships on the board. This project is based on this classic board game and is made purely in Python. This version of the game is soley played against the developer, and so the ships placements have been predetermined before the user starts. The objective for the user, is to try and guess where the ships are located through entering coordinates, as propted by the console. After each attempt, the console will show and mark where the user selected and display either; Miss, Hit or Destroyed. A miss is displayed as an 'x', a hit is displayed as an 'o' and when the user destroys the final part of a ship a 'D' is shown, indicating destroyed. The user has a total of 3 ships to destroy completely within 15 attempts, otherwise a message of 'You have lost!' will appear. If the user manages to destroy the ships, then they are met with 'Congratulations! You have won!'. Following on from this, you can select to play again via the prompts.
 
-## Features
+# Features
 
-### Existing Features
+## Existing Features
 
 - Currently the game is played on a 10 by 10 board which is generated with predetermined ship locations on it.
 - The boards axis are labelled numerically, with the smallest value input being 0, top left corner, and the largest being 99, bottom right corner.
-- Before starting the game, the play is unaware of the coordinates, as they are nested in the raw code, so the ships are completely hidden until found.
-- 
+- Before starting the game, the user is unaware of the coordinates, as they are nested in the raw code, so the ships are completely hidden until found.
+- The user has a limited number of rounds before the game ends. If all turns are used up before finding the ships locations, the terminal will print "You have lost!".
+- Alternatively, if the user does manage to find all the ships and destroy them, they will be prompted with the message "You have won!".
+- Regardless of the outcome, at the end of the game, the user will be ask if they would like to play again, entering 'Y' or 'N' to continue.
+- The game has a feature that notifies the user if the input they chose was invalid. For example, if the user wrote "Shoot at tile 56", the terminal would return "Invalid entry, please try again." as this input is not an integer by itself.
+- The game also check to see if the user inputs a repeated guess. So not to take a shot away from the user, the terminal will return "Already fired at this location, try again.".
 
-### Future Developments
+## Future Developments
 
 **Coming Soon**
 - In the future, this game will be played against the computer with randomly generated coordinates for the ships. This feature would enable replayability and allow the user to repeatably play the game over and over with different result each time potentially.
@@ -61,14 +65,24 @@ Battleships is a classic strategy game whereby the users end goal, is to destroy
 - An additional feature that I would like to add, is that ability to change the size of the board for which the game is played on. This could increase or decrease the time of the game depending on size. This could be good in allowing people in the same room to play and take it in turns with a larger board available, rather than just increasing the amount of ships which could overcrowd the board and make the game too easy.
 - The game is in its simplest form and in future, the overall design and look of the game could be improved visually to make it more appealing to users.
 
-## Testing
+# Languages
 
-### Validator Testing
+* Python
+
+# Frameworks, Libraries & Programs
+
+* Github - Repository stored here.
+* VSCode - Program used to write the code.
+* Heroku - Cloud-based service to deploy the live version of the game.
+
+# Testing
+
+## Validator Testing
 
 - [PEP8 Linter](https://pep8ci.herokuapp.com/#): No errors.
 ![PEP8 Test](/assets/images/ci_linter.png)
 
-### General Continuous Testing
+## General Continuous Testing
 
 Having passed my code through the PEP8 Linter, which returned no errors, i have continuously tested my game throughout its build. Some of the methods and tests used, are as followed:
 - At numerous development points, I have input code to test the outcome, this included knowingly inputting invalid commands to see what the outcome would be and to ensure that the intended comment from the terminal was executed ("Invalid entry"). 
@@ -76,7 +90,7 @@ Having passed my code through the PEP8 Linter, which returned no errors, i have 
 - Another bi-product of testing was what happens if the user uses up all of their guesses before winning? At the time, there was no "You lost!" message. This was later added in to indicate no tries left.
 - My mentor and friends have both tested the game and played it and reported good functionality.
 
-### De-bugging:
+## De-bugging:
 
 - Corrected an error in the code where 'chr' was written, rather than 'ch' resulting in the code not running correctly and not printing the table or content.
 - When testing the code to see if inputting coordinates was working, i discovered that the grid wasnt being displayed at all. I tried re-writing the 'check shot' function to see if it was interfering with the results, but that didnt fix it. However, this did help me discover another issue, as the original code for this section was not functioning properly and didn't allow the user to enter another guess.
@@ -86,7 +100,7 @@ Having passed my code through the PEP8 Linter, which returned no errors, i have 
 - During some of the final testing stages, it was discovered that there was no message to the user if all attempts had been used, to say the game had ended and that they had lost. This was rectified and added in as a feature.
 - When putting my code through the CI Python Linter, i was met with a multitude of errors, ranging from ' trailing whitespace', 'line too long', missing white space', and 'do not use bare "except"'. Running through my code again, i removed the whitespace where needed and additinally added whitespace where necessary. I also shortened lines of code to fit the 80 character limit by either rewording or using a '\' to move to next line. The "except" term required the addition of 'Exception:' as this is the base type for all 'Regular' exceptions rather than catching all of them, some of which i wouldnt want to catch, if left with just a bare except. 
 
-### Deployment:
+# Deployment:
 
 This project was deployed using Code Institute's mock terminal for Heroku.
 
@@ -94,15 +108,15 @@ Steps for deployment:
 
 - Clone this repository.
 - Create a new Heroku app.
+- In the settings, within the 'Config Vars', add the KEY/Value pairs: PORT. Set this to 8000.
 - Set the buildbacks to Python and NodeJs in that order.
-- In the settings, add the KEY/Value pairs: PORT. Set this to 8000.
 - Link the Heroku app to the repository.
 - Click Deploy.
 
-### Credits
+# Credits
 
 - Inspiration taken from [Dr. Codie](https://drcodie.com/battleships-game-in-python/).
-- Resources used from [Codecademy](https://www.codecademy.com/resources/docs/swift/arrays), Mimo Coding App, and 
+- Resources used from [Codecademy](https://www.codecademy.com/resources/docs/swift/arrays), and Mimo Coding App.
 
 
 
