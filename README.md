@@ -15,14 +15,23 @@ Battleships is a classic strategy game whereby the users end goal, is to destroy
 ## Existing Features
 
 - Currently the game is played on a 10 by 10 board which is generated with predetermined ship locations on it.
+
 - The boards axis are labelled numerically, with the smallest value input being 0, top left corner, and the largest being 99, bottom right corner.
+
 - Before starting the game, the user is unaware of the coordinates, as they are nested in the raw code, so the ships are completely hidden until found.
+
 - The user has a limited number of rounds before the game ends. If all turns are used up before finding the ships locations, the terminal will print "You have lost!".
+
 - Alternatively, if the user does manage to find all the ships and destroy them, they will be prompted with the message "You have won!".
+
 - Regardless of the outcome, at the end of the game, the user will be ask if they would like to play again, entering 'Y' or 'N' to continue.
+
 - The game has a feature that notifies the user if the input they chose was invalid. For example, if the user wrote "Shoot at tile 56", the terminal would return "Invalid entry, please try again." as this input is not an integer by itself.
+
 - The game also check to see if the user inputs a repeated guess. So not to take a shot away from the user, the terminal will return "Already fired at this location, try again.".
+
 - A new feature was added to track the turn the user is on, and notify how many goes they have left.
+
 
 ## Future Developments
 
@@ -66,7 +75,8 @@ Having passed my code through the PEP8 Linter, which returned no errors, i have 
 - When adding a new ship, i realised that when writing the second check_shot function that it wasn't as simple as re-writing it the same as ship 1. I needed to add an 'elif' statement so that if there is a miss for both, the code can understand that it has missed both ships not just 1 of them. 
 - When testing after adding a third ship location, the terminal after the first coordinate input was returning a ValueError message, pointing to line 168 as the culprit. I tried re-writing that line of code, ensuring it was written out correctly and included the 'ship3' in its command, however the same message was beign returned each time. So, i started working from the top-down, analysing my code to see if i had missing something earlier on. Within the check shot function i noticed (after many scans) that in the return at the bottom of the function, 'ship3' was not defined. Upon editing this mistake and adding this in, the board now functioned again properly.
 - During some of the final testing stages, it was discovered that there was no message to the user if all attempts had been used, to say the game had ended and that they had lost. This was rectified and added in as a feature.
-- When putting my code through the CI Python Linter, i was met with a multitude of errors, ranging from ' trailing whitespace', 'line too long', missing white space', and 'do not use bare "except"'. Running through my code again, i removed the whitespace where needed and additinally added whitespace where necessary. I also shortened lines of code to fit the 80 character limit by either rewording or using a '\' to move to next line. The "except" term required the addition of 'Exception:' as this is the base type for all 'Regular' exceptions rather than catching all of them, some of which i wouldnt want to catch, if left with just a bare except. 
+- When putting my code through the CI Python Linter, i was met with a multitude of errors, ranging from ' trailing whitespace', 'line too long', missing white space', and 'do not use bare "except"'. Running through my code again, i removed the whitespace where needed and additinally added whitespace where necessary. I also shortened lines of code to fit the 80 character limit by either rewording or using a '\' to move to next line. The "except" term required the addition of 'Exception:' as this is the base type for all 'Regular' exceptions rather than catching all of them, some of which i wouldnt want to catch, if left with just a bare except.
+- During a test from my mentor, it was found that the play_again function was accepting any input as a 'yes' input. To fix this, I changed the function to require a specific 'yes' or 'no' input, otherwise: 'Invalid input. Please enter yes or no.', would be displayed to the user.
 
 # Deployment:
 

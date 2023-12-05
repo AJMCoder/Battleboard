@@ -127,6 +127,7 @@ while play_again.lower() == 'yes':
             print("Congratulations! You have won!")
             break
 
+    # this is the input that allows the user to play again.
     play_again = input("Do you want to play again? (yes/no): ")
     while play_again.lower() not in ['yes', 'no']:
             print("Invalid input. Please enter 'yes' or 'no'.")
