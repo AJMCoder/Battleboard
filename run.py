@@ -20,7 +20,7 @@ while play_again.lower() == 'yes':
                                  Good luck!
         ''')
 
-# The board layout is adapted from Dr. Codie's Battleship game.
+# The basic functionality is adapted from Dr. Codie's Battleship game.
 # Linked here: https://drcodie.com/battleships-game-in-python/
 
     # this is the function to show the board.
@@ -128,9 +128,13 @@ while play_again.lower() == 'yes':
             break
 
     play_again = input("Do you want to play again? (yes/no): ")
-    if play_again.lower() == 'no':
-        print("Thanks for playing!")
-        break
-    else:
-        print("Let's play again!")
-        continue
+    while play_again.lower() not in ['yes', 'no']:
+            print("Invalid input. Please enter 'yes' or 'no'.")
+            play_again = input("Do you want to play again? (yes/no): ")
+
+            if play_again.lower() == 'no':
+                print("Thanks for playing!")
+                break
+            else:
+                print("Let's play again!")
+                continue
