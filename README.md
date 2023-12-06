@@ -104,6 +104,10 @@ Having passed my code through the PEP8 Linter, which returned no errors, i have 
 - When putting my code through the CI Python Linter, i was met with a multitude of errors, ranging from ' trailing whitespace', 'line too long', missing white space', and 'do not use bare "except"'. Running through my code again, i removed the whitespace where needed and additinally added whitespace where necessary. I also shortened lines of code to fit the 80 character limit by either rewording or using a '\' to move to next line. The "except" term required the addition of 'Exception:' as this is the base type for all 'Regular' exceptions rather than catching all of them, some of which i wouldnt want to catch, if left with just a bare except.
 - During a test from my mentor, it was found that the play_again function was accepting any input as a 'yes' input. To fix this, I changed the function to require a specific 'yes' or 'no' input, otherwise: 'Invalid input. Please enter yes or no.', would be displayed to the user.
 
+## Remaining Bugs:
+
+- No remaining bugs.
+
 # Deployment:
 
 This project was deployed using Code Institute's mock terminal for Heroku.
