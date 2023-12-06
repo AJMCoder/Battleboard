@@ -15,24 +15,29 @@ Battleships is a classic strategy game whereby the users end goal, is to destroy
 ## Existing Features
 
 - The game displays the game instructions to help the user understand how to play and explain the rules and task.
-![rules]()
+![rules](/assets/images/instructions.png)
 - Currently the game is played on a 10 by 10 board which is generated with predetermined ship locations on it.
-![board]()
 - The boards axis are labelled numerically, with the smallest value input being 0, top left corner, and the largest being 99, bottom right corner.
+![board](/assets/images/board.png)
 - Before starting the game, the user is unaware of the coordinates, as they are nested in the raw code, so the ships are completely hidden until found.
-![hidden coordinates]()
+![hidden coordinates](/assets/images/coordinates.png)
+- Upon hitting a ship with a correct coordinate, the user is shown the message of 'You have hit a ship!' to confirm this. The board also shows this with a 'o' symbol indicating a hit.
+![hit](/assets/images/hit.png)
+- When the user misses their shot, they are shown the message of 'You have missed!'.
+![miss](/assets/images/miss.png)
+- When the user destroys a ship entirely, a 'D' symbol is shown in that location, indicating that it was the final coordinate remaining of that vessel. 
+![destroyed](/assets/images/destroyed.png)
 - The user has a limited number of rounds before the game ends. If all turns are used up before finding the ships locations, the terminal will print "You have lost!".
-![lost message]()
+![lost message](/assets/images/lost.png)
 - Alternatively, if the user does manage to find all the ships and destroy them, they will be prompted with the message "You have won!".
-![winner message]()
-- Regardless of the outcome, at the end of the game, the user will be ask if they would like to play again, entering 'Y' or 'N' to continue.
-![replay]()
+- Regardless of the outcome, at the end of the game, the user will be ask if they would like to play again, entering 'Yes' or 'No' to continue.
+![winner/replay message](/assets/images/winner.png)
 - The game has a feature that notifies the user if the input they chose was invalid. For example, if the user wrote "Shoot at tile 56", the terminal would return "Invalid entry, please try again." as this input is not an integer by itself.
-![invalid]()
+![invalid](/assets/images/invalid.png)
 - The game also check to see if the user inputs a repeated guess. So not to take a shot away from the user, the terminal will return "Already fired at this location, try again.".
-![repeat]()
+![repeat](/assets/images/repeat.png)
 - A new feature was added to track the turn the user is on, and notify how many goes they have left.
-![turns]()
+![turns](/assets/images/turns.png)
 
 ## Future Developments
 
